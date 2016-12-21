@@ -1,0 +1,81 @@
+plugins:
+  karambol-saml:
+    class: Karambol\Saml\SamlPlugin
+    options:
+      saml:
+
+        strict: true
+        debug: ~
+        baseurl: ~
+
+        sp:
+          entityId: ~
+          assertionConsumerService:
+            url: ~
+            binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST
+          attributeConsumingService:
+            url: ~
+            serviceName: "Karambol Service Provider"
+            serviceDescription: "A service provider for the Karambol portal"
+            requestedAttributes:
+              - name: ~
+                isRequired: false
+                nameFormat: ~
+                friendlyName: ~
+                attributeValue: ~
+          singleLogoutService:
+            url: ~
+            binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect
+          NameIDFormat: urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
+          x509cert: ~
+          privateKey: ~
+
+        idp:
+          entityId: https://idp.testshib.org/idp/shibboleth
+          singleSignOnService:
+            url: https://idp.testshib.org/idp/profile/SAML2/Redirect/SSO
+            binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect
+          singleLogoutService:
+            url: https://sp.testshib.org/Shibboleth.sso/SLO/Redirect
+            binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect
+          x509cert: MIIDAzCCAeugAwIBAgIVAPX0G6LuoXnKS0Muei006mVSBXbvMA0GCSqGSIb3DQEB CwUAMBsxGTAXBgNVBAMMEGlkcC50ZXN0c2hpYi5vcmcwHhcNMTYwODIzMjEyMDU0 WhcNMzYwODIzMjEyMDU0WjAbMRkwFwYDVQQDDBBpZHAudGVzdHNoaWIub3JnMIIB IjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAg9C4J2DiRTEhJAWzPt1S3ryh m3M2P3hPpwJwvt2q948vdTUxhhvNMuc3M3S4WNh6JYBs53R+YmjqJAII4ShMGNEm lGnSVfHorex7IxikpuDPKV3SNf28mCAZbQrX+hWA+ann/uifVzqXktOjs6DdzdBn xoVhniXgC8WCJwKcx6JO/hHsH1rG/0DSDeZFpTTcZHj4S9MlLNUtt5JxRzV/MmmB 3ObaX0CMqsSWUOQeE4nylSlp5RWHCnx70cs9kwz5WrflnbnzCeHU2sdbNotBEeTH ot6a2cj/pXlRJIgPsrL/4VSicPZcGYMJMPoLTJ8mdy6mpR6nbCmP7dVbCIm/DQID AQABoz4wPDAdBgNVHQ4EFgQUUfaDa2mPi24x09yWp1OFXmZ2GPswGwYDVR0RBBQw EoIQaWRwLnRlc3RzaGliLm9yZzANBgkqhkiG9w0BAQsFAAOCAQEASKKgqTxhqBzR OZ1eVy++si+eTTUQZU4+8UywSKLia2RattaAPMAcXUjO+3cYOQXLVASdlJtt+8QP dRkfp8SiJemHPXC8BES83pogJPYEGJsKo19l4XFJHPnPy+Dsn3mlJyOfAa8RyWBS 80u5lrvAcr2TJXt9fXgkYs7BOCigxtZoR8flceGRlAZ4p5FPPxQR6NDYb645jtOT MVr3zgfjP6Wh2dt+2p04LG7ENJn8/gEwtXVuXCsPoSCDx9Y0QmyXTJNdV1aB0AhO RkWPlFYwp+zOyOIR+3m1+pqWFpn0eT/HrxpdKa74FA3R2kq4R7dXe4G0kUgXTdqX MLRKhDgdmA==
+          certFingerprint: ~
+          certFingerprintAlgorithm: ~
+
+        compress:
+          requests: true
+          responses: true
+
+        security:
+          nameIdEncrypted: false
+          authnRequestsSigned: false
+          logoutRequestSigned: false
+          logoutResponseSigned: false
+          signMetadata: false
+          wantMessagesSigned: false
+          wantAssertionsEncrypted: false
+          wantNameId: true
+          wantNameIdEncrypted: false
+          requestedAuthnContext: true
+          wantXMLValidation: true
+          signatureAlgorithm: http://www.w3.org/2000/09/xmldsig#rsa-sha1
+          lowercaseUrlencoding: false
+
+        contactPerson:
+          technical:
+            givenName: Administrator
+            emailAddress: admin@localhost
+          support:
+            givenName: Support
+            emailAddress: support@localhost
+
+        organization:
+          en-US:
+            name: Karambol
+            displayname: Karambol
+            url: http://getkarambol.org
+
+# See doc/<language>/assets for informations on how to deploy you plugin assets automatically
+assets:
+  karambol-saml:
+    - { src: "vendor/karambol/saml/public", dest: "public/plugins/karambol/saml" }

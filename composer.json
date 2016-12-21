@@ -1,0 +1,17 @@
+{
+  "name": "karambol/saml",
+  "authors": [
+    {
+      "name": "William Petit",
+      "email": "william.petit@ptitcloud.fr"
+    }
+  ],
+  "require": {
+    "onelogin/php-saml": "^2.10"
+  },
+  "autoload": {
+    "psr-4": {
+      "Karambol\\Saml\\": "src/"
+    }
+  }
+}
